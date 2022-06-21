@@ -109,11 +109,11 @@ class AddressBook(UserDict):
     def add_record(self, record: Record):
         self.data[record.name.value] = record
 
-    def iterator(self, days=0):
+    def iterator(self, days=0, func=None):
         i = 0
         index, print_block = 1, 'Page ' + str(i) + '\n'
         for record in self.data.values():
-            if days == 0 or (record.birthday.value is not None and record.days_to_hp(record.birthday) <= days):
+            if func is None or func(record):
                 print_block += str(record) + '\n'
                 if index < N:
                     index += 1

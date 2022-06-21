@@ -113,7 +113,7 @@ class AddressBook(UserDict):
         i = 0
         index, print_block = 1, 'Page ' + str(i) + '\n'
         for record in self.data.values():
-            if days == 0 or (record.birthday.value is not None and record.days_to_birthday(record.birthday) <= days):
+            if days == 0 or (record.birthday.value is not None and record.days_to_hp(record.birthday) <= days):
                 print_block += str(record) + '\n'
                 if index < N:
                     index += 1
